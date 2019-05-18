@@ -508,11 +508,14 @@ class _EmbedJsHandler(_AbstractJsHandler):
     def _get_absolute_embed_lib_js_url(self):
         return self.request.host_url + _EMBED_LIB_JS_URL
 
+    def _get_absolute_jquery_url(self):
+        return self.request.host_url + _JQUERY_URL
+
     def _get_env(self):
         return {
             _EMBED_CSS_URL_NAME: self._get_absolute_embed_css_url(),
             _EMBED_LIB_JS_URL_NAME: self._get_absolute_embed_lib_js_url(),
-            _JQUERY_URL_NAME: _JQUERY_URL,
+            _JQUERY_URL_NAME: self._get_absolute_jquery_url(),
             _MATERIAL_ICONS_URL_NAME: _MATERIAL_ICONS_URL,
             _ROBOTO_URL_NAME: _ROBOTO_URL,
         }

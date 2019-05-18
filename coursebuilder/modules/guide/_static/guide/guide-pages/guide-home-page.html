@@ -69,9 +69,9 @@
 
       /* Logo & title container. */
       #logoContainer {
-        @apply(--layout-flex);
-        @apply(--layout-horizontal);
-        @apply(--layout-center-justified);
+        @apply --layout-flex;
+        @apply --layout-horizontal;
+        @apply --layout-center-justified;
       }
 
       /* Logo. */
@@ -89,17 +89,17 @@
       }
 
       .title-narrow {
-        @apply(--layout-flex);
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        @apply --layout-flex;
+        @apply --layout-horizontal;
+        @apply --layout-center;
       }
 
       /* Courses menu. */
       #courseMenu {
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
-        @apply(--layout-end);
-        @apply(--layout-start-justified);
+        @apply --layout-flex;
+        @apply --layout-vertical;
+        @apply --layout-end;
+        @apply --layout-start-justified;
         margin: 4px;
       }
       #courseMenu guide-course-item {
@@ -108,30 +108,30 @@
 
       /* Courses menu responsive. */
       #courseMenu[narrow] {
-        @apply(--layout-start);
+        @apply --layout-start;
       }
       #courseMenu[narrow] guide-course-item {
         width: 100%;
       }
 
       #cardsContainer {
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
-        @apply(--layout-start-justified);
+        @apply --layout-flex;
+        @apply --layout-vertical;
+        @apply --layout-start-justified;
       }
 
       /* Drawer body.  */
       paper-header-panel[drawer] {
         --paper-header-panel-body: {
-          @apply(--layout-flex);
-          @apply(--layout-vertical);
-          @apply(--layout-end-justified);
+          @apply --layout-flex;
+          @apply --layout-vertical;
+          @apply --layout-end-justified;
         };
       }
 
       /* Main panel */
       paper-scroll-header-panel {
-        @apply(--layout-fit);
+        @apply --layout-fit;
       }
 
       /* To avoid auto-hiding of [paper-drawer-toggle] elements when drawer is open. */

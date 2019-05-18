@@ -882,19 +882,20 @@ class EnrollmentsDataSource(data_sources.AbstractSmallRestDataSource,
 CourseEnrolled = collections.namedtuple('CourseEnrolled',
     ['count', 'display', 'most_recent_enroll'])
 
+# UNICODE is possible in course_title, the final "{}" in these _FMT strings.
 _NONE_RECENT_FMT = u'(registration activity is being computed for "{}")'
 _MOST_RECENT_FMT = u'Most recent activity at {} for "{}".'
 
-def get_course_enrolled(enrolled_dto, course_name):
+def get_course_enrolled(enrolled_dto, course_title):
     if enrolled_dto.is_empty:
         # 'count' property is not present, so exit early.
         return CourseEnrolled(
-            0, NONE_ENROLLED, _NONE_RECENT_FMT.format(course_name))
+            0, NONE_ENROLLED, _NONE_RECENT_FMT.format(course_title))
 
     count = enrolled_dto.get()
     lm_dt = utc.timestamp_to_datetime(enrolled_dto.last_modified)
     lm_text = utc.to_text(dt=lm_dt, fmt=utc.ISO_8601_UTC_HUMAN_FMT)
-    most_recent_enroll = _MOST_RECENT_FMT.format(lm_text, course_name)
+    most_recent_enroll = _MOST_RECENT_FMT.format(lm_text, course_title)
     return CourseEnrolled(count, count, most_recent_enroll)
 
 

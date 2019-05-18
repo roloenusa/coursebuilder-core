@@ -72,7 +72,7 @@ class Sender(object):
     # time.  To do that, we fetch an enablement flag and a destination URL
     # from a JSON document hosted at this URL.
     _REPORT_SETTINGS_INFO_URL = (
-        'https://www.google.com/edu/coursebuilder/stats/config.json')
+        'https://edu.google.com/coursebuilder/stats/config.json')
 
     # Field in control document indicating whether stats reporting is enabled.
     _REPORT_ENABLED = 'enabled'

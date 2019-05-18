@@ -48,15 +48,15 @@
   <template>
     <style include="guide-styles">
       #view {
-        @apply(--layout-fit);
+        @apply --layout-fit;
         /* To enable vertical scroll on swipeable elements. */
         touch-action: pan-y !important;
         padding: 16px;
       }
 
       :host[narrow] #view {
-        @apply(--layout-vertical);
-        @apply(--layout-start);
+        @apply --layout-vertical;
+        @apply --layout-start;
         padding: 0px 16px 0px 16px;
       }
 
@@ -92,7 +92,7 @@
       }
 
       :host[narrow] iframe {
-        @apply(--shadow-elevation-2dp);
+        @apply --shadow-elevation-2dp;
       }
 
       :host[narrow] textarea {

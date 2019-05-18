@@ -384,6 +384,7 @@ class AvailabilityRESTHandler(utils.BaseRESTHandler):
             content_type, content_id)
         text = title
         if note:
+            # UNICODE possible in course `title` arg used to initialize `text`.
             text = u'{} ({})'.format(text, note)
         if indent:
             text = ('&emsp;' * indent) + text

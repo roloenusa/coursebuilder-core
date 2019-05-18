@@ -7,6 +7,6 @@
 flatten_script="${BASH_ARGV[0]}"
 
 if [ "$ALLOW_STATIC_SERV" = true ] ; then
-  export PYTHONPATH="$BEAUTIFULSOUP_PATH:$PYTHONPATH"
+  export PYTHONPATH="$HTML5LIB_PATH:$BEAUTIFULSOUP_PATH:$PYTHONPATH"
   python "$(dirname "${flatten_script}")/flatten_polymer_imports.py"
 fi

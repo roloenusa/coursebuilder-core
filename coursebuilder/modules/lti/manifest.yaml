@@ -1,0 +1,30 @@
+registration:
+  main_module: modules.lti.lti
+  enabled: True
+  enabled_for_tests: True
+
+tests:
+  functional:
+    - modules.lti.lti_functional_tests.FieldsTest = 10
+    - modules.lti.lti_functional_tests.LaunchHandlerTest = 8
+    - modules.lti.lti_functional_tests.LoginHandlerTest = 7
+    - modules.lti.lti_functional_tests.LTIToolTagTest = 3
+    - modules.lti.lti_functional_tests.RedirectHandlerTest = 2
+    - modules.lti.lti_functional_tests.RuntimeTest = 7
+    - modules.lti.lti_functional_tests.SecurityParserTest = 9
+    - modules.lti.lti_functional_tests.SerializerTest = 2
+    - modules.lti.lti_functional_tests.ToolsParserTest = 7
+    - modules.lti.lti_functional_tests.UrljoinTest = 6
+    - modules.lti.lti_functional_tests.ValidationHandlerTest = 21
+
+files:
+  - modules/lti/__init__.py
+  - modules/lti/fields.py
+  - modules/lti/manifest.yaml
+  - modules/lti/lti.py
+  - modules/lti/lti_functional_tests.py
+  - modules/lti/resources/lti-iframe.png
+  - modules/lti/templates/error.html
+  - modules/lti/templates/launch.html
+  - modules/lti/templates/login.html
+  - modules/lti/templates/redirect.html

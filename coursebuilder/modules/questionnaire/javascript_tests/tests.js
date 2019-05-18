@@ -35,12 +35,15 @@ describe("questionnaire library", function () {
         .toEqual("http://www.google.com");
     expect($(this.form).find("[name='tel']").val()).toEqual("012334545");
     expect($(this.form).find("[name='time']").val()).toEqual("12:02");
-    expect($(this.form).find("[name='select']").val()).toEqual("Apple");
-    expect($(this.form).find("[name='radio']").val()).toEqual("male");
+    expect($(this.form).find("[name='select']").val()).toEqual("Banana");
+    expect($(this.form).find("[name='radio']:checked").val()).toEqual("female");
     expect($(this.form).find("[name='datalist']").val()).toEqual("Peas");
     expect($(this.form).find("[name='textarea']").val()).toEqual("A student.");
-    expect($(this.form).find("[name='checkbox']").val())
-        .toEqual("Bike" || "Walk");
+
+    var checkedCheckBoxes = $(this.form).find("[name='checkbox']:checked");
+    expect(checkedCheckBoxes.length).toBe(2);
+    expect(checkedCheckBoxes[0].value).toBe('Bike');
+    expect(checkedCheckBoxes[1].value).toBe('It\'s not known');
   });
 
   it("executes the correct logic when data status is 200", function() {

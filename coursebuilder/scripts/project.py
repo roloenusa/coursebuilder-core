@@ -939,7 +939,7 @@ def count_files_in_dir(dir_name, suffix=None):
 
 def _enforce_file_count(config):
     """Check that we have exactly the files we expect; delete extras."""
-    skip_rel_dirs = ['_static']
+    skip_rel_dirs = ['lib/_static']
     known_files = config.files.all_known_files
 
     # verify mo files

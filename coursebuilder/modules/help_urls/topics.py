@@ -31,7 +31,7 @@ class _LegacyUrl(object):
 # giving the suffix of the help URL. Neither may be missing or empty. url_suffix
 # is relative to the version component of the URL. If you have a URL of the form
 #
-#   https://www.google.com/edu/openonline/course-builder/docs/1.10/something,
+#   https://edu.google.com/openonline/course-builder/docs/1.10/something,
 #
 # the value to put here is '/something'.
 _ALL = [

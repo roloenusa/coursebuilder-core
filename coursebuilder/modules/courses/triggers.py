@@ -2322,14 +2322,14 @@ class MilestoneTrigger(AvailabilityTrigger):
     # Or, without a trigger, using the corresponding 'course' setting instead:
     #   "Start on 2016-10-20 12:00:00 UTC."
     # Or, as a last resort, simply the date and time.
-    _ON_PREFIX = u'{} on '
+    _ON_PREFIX = '{} on '
     _TITLE_ON_WHEN_FMT = _ON_PREFIX + '{}.'
-    _WHEN_FOR_COURSE_FMT = '{} for "{}".'
+    _WHEN_FOR_COURSE_FMT = u'{} for "{}".'  # UNICODE possible in course_title.
     _WHEN_TOOLTIP_FMT = _ON_PREFIX + _WHEN_FOR_COURSE_FMT
     _UTC_SUFFIX = ' UTC'
 
     @classmethod
-    def get_course_when(cls, env, milestone, course_name):
+    def get_course_when(cls, env, milestone, course_title):
         """Returns a CourseWhen named tuple filled out from env settings."""
         title = constants.MILESTONE_TO_TITLE.get(milestone)
 
@@ -2362,9 +2362,9 @@ class MilestoneTrigger(AvailabilityTrigger):
             no_suffix = no_suffix[:-len(cls._UTC_SUFFIX)]
 
         if title:
-            tip = cls._WHEN_TOOLTIP_FMT.format(title, human, course_name)
+            tip = cls._WHEN_TOOLTIP_FMT.format(title, human, course_title)
             no_suffix = cls._TITLE_ON_WHEN_FMT.format(title, no_suffix)
         else:
-            tip = cls._WHEN_FOR_COURSE_FMT.format(human, course_name)
+            tip = cls._WHEN_FOR_COURSE_FMT.format(human, course_title)
 
         return cls.CourseWhen(when, human, date, no_suffix, tip)

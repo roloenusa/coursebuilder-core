@@ -42,29 +42,42 @@
 <dom-module id="guide-unit-card">
 
   <template>
+    <style id="linter-paper-button-style">
+      /**
+       * This style preserves the styling previous to
+       * https://github.com/PolymerElements/paper-button/pull/115
+       * This change can break the layout of paper-button content.
+       * Remove this style to apply the change, more details at b/70528356.
+       */
+      paper-button {
+        display: inline-block;
+        text-align: center;
+        font-family: inherit;
+      }
+    </style>
     <style include="guide-styles">
 
       paper-card {
-        @apply(--layout-flex);
-        @apply(--layout-vertical);
+        @apply --layout-flex;
+        @apply --layout-vertical;
         margin: 10px 96px 10px 10px;
         max-width: 75%;
       }
 
       :host[narrow] paper-card {
-        @apply(--layout-flex);
-        @apply(--layout-horizontal);
+        @apply --layout-flex;
+        @apply --layout-horizontal;
         margin: 0px;
         max-width: 100%;
         border-bottom: 1px solid #fff;
       }
 
       paper-card:hover {
-        @apply(--shadow-elevation-8dp);
+        @apply --shadow-elevation-8dp;
       }
 
       :host[narrow] paper-card:hover {
-        @apply(--shadow-none);
+        @apply --shadow-none;
       }
 
       :host[narrow][selected] paper-card {
@@ -88,24 +101,24 @@
       }
 
       .card-header {
-        @apply(--layout-horizontal);
-        @apply(--layout-start-justified);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-start-justified;
+        @apply --layout-center;
         background-color: var(--primary-color);
         color: #fff;
         cursor: pointer;
       }
 
       :host[narrow] .card-content {
-        @apply(--layout-flex);
-        @apply(--layout-horizontal);
-        @apply(--layout-center);
+        @apply --layout-flex;
+        @apply --layout-horizontal;
+        @apply --layout-center;
       }
 
       .card-actions {
-        @apply(--layout-horizontal);
-        @apply(--layout-justified);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-justified;
+        @apply --layout-center;
       }
 
       :host[narrow] .card-actions {
@@ -113,9 +126,9 @@
       }
 
       .card-duration {
-        @apply(--layout-horizontal);
-        @apply(--layout-start-justified);
-        @apply(--layout-center);
+        @apply --layout-horizontal;
+        @apply --layout-start-justified;
+        @apply --layout-center;
         opacity: .5;
         font-style: italic;
         font-size: small;

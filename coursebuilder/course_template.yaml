@@ -36,7 +36,7 @@ html_hooks:
     # include any analytics code that covers all your course webpages, you can
     # do so here: see
     #
-    # https://www.google.com/edu/openonline/edukit/create.html
+    # https://edu.google.com/openonline/edukit/create.html
     #
     # for details.
     before_head_tag_ends: '<!-- base.before_head_tag_ends -->'

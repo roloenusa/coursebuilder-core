@@ -55,7 +55,7 @@ from models import services
 from modules.help_urls import topics
 
 
-_BASE_URL = 'https://www.google.com/edu/openonline/course-builder/docs'
+_BASE_URL = 'https://edu.google.com/openonline/course-builder/docs'
 # Legacy documentation URL. Fall through to this whenever an item is in
 # topics._ALL but its value is topics._DEFAULT.
 # TODO(johncox): remove this once topics._ALL is fully populated.

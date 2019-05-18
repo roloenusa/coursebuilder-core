@@ -14,10 +14,10 @@
     {"name": "url", "value": "http://www.google.com"},
     {"name": "tel", "value": "012334545"},
     {"name": "time", "value": "12:02"},
-    {"name": "select", "value": "Apple"},
-    {"name": "radio", "value": "male"},
+    {"name": "select", "value": "Banana"},
+    {"name": "radio", "value": "female"},
     {"name": "checkbox", "value": "Bike"},
-    {"name": "checkbox", "value": "Walk"},
+    {"name": "checkbox", "value": "It's not known"},
     {"name": "datalist", "value": "Peas"},
     {"name": "textarea", "value": "A student."}
   ]

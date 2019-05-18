@@ -5,7 +5,7 @@ tests:
   functional:
     - modules.unsubscribe.unsubscribe_tests.GetUnsubscribeUrlTests = 1
     - modules.unsubscribe.unsubscribe_tests.SubscribeAndUnsubscribeTests = 4
-    - modules.unsubscribe.unsubscribe_tests.UnsubscribeHandlerTests = 4
+    - modules.unsubscribe.unsubscribe_tests.UnsubscribeHandlerTests = 5
 
 files:
   - modules/unsubscribe/__init__.py

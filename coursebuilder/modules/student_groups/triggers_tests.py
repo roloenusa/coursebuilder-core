@@ -1,3 +1,4 @@
+# coding: utf-8
 # Copyright 2016 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -108,6 +109,8 @@ class ContentOverrideTriggerTests(OverrideTriggerTestsMixin,
                                   triggers_tests.ContentTriggerTestBase):
     """Tests the ContentOverrideTrigger class."""
 
+    # "Content Override Trigger Test", but UNICODE-obfuscated.
+    COURSE_TITLE = u'ℂȫἢťеηţ Őύėɼгῑɗё Тṙіɠǵḛѓ Τѐṡʈ'
     COURSE_NAME = 'content_override_trigger_test'
 
     sg_content_ot = student_groups.ContentOverrideTrigger
@@ -165,6 +168,8 @@ class CourseOverrideTriggerTests(OverrideTriggerTestsMixin,
                                  triggers_tests.MilestoneTriggerTestBase):
     """Tests the CourseOverrideTrigger class."""
 
+    # "Course Override Trigger Test", but UNICODE-obfuscated.
+    COURSE_TITLE = u'Ϲôմŗṧẻ Ỏῦȇṛṛịḍě Țŕἳɡğḙг Ťęṧț'
     COURSE_NAME = 'course_override_trigger_test'
     NAMESPACE = 'ns_{}'.format(COURSE_NAME)
 

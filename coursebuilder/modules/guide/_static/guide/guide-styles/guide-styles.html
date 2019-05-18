@@ -33,24 +33,24 @@
       }
 
       div, p, span {
-        @apply(--paper-font-common-base);
+        @apply --paper-font-common-base;
       }
 
       h1 {
-        @apply(--paper-font-headline);
+        @apply --paper-font-headline;
       }
 
       h1 + span {
-        @apply(--paper-font-subhead);
+        @apply --paper-font-subhead;
       }
 
       h2 {
-        @apply(--paper-font-title);
+        @apply --paper-font-title;
         font-weight: 300;
       }
 
       body {
-        @apply(--layout-fullbleed);
+        @apply --layout-fullbleed;
         background-color: var(--app-background-color);
         margin: 0px;
       }
@@ -75,7 +75,7 @@
       }
 
       paper-fab:hover {
-        @apply(--shadow-elevation-6dp);
+        @apply --shadow-elevation-6dp;
         transition: box-shadow .2s;
       }
     </style>

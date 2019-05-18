@@ -85,10 +85,10 @@ function setFormData(data, key) {
     else {
       switch(type) {
         case "checkbox":
-          elt.filter("[value='" + value + "']").prop("checked", true);
-          break;
         case "radio":
-          elt.filter("[value='" + value + "']").prop("checked", true);
+          elt.filter(function(index, e) {
+            return $(e).val() == value;
+          }).prop("checked", true);
           break;
         default:
           elt.val(value);

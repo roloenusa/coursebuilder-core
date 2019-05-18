@@ -50,21 +50,21 @@
   <template>
     <style include="guide-styles">
       :host {
-        @apply(--shadow-elevation-6dp);
+        @apply --shadow-elevation-6dp;
       }
 
      #title {
-        @apply(--layout-flex);
+        @apply --layout-flex;
         margin: 0px 12px;
-        @apply(--paper-font-title);
+        @apply --paper-font-title;
         font-weight: 300;
       }
 
       #nav {
-        @apply(--layout-horizontal-reverse);
-        @apply(--layout-center);
-        @apply(--layout-around-justified);
-        @apply(--layout-flex);
+        @apply --layout-horizontal-reverse;
+        @apply --layout-center;
+        @apply --layout-around-justified;
+        @apply --layout-flex;
         position: absolute;
         bottom: 56px; left: 0px; right: 0px;
         pointer-events: none;
@@ -75,7 +75,7 @@
       }
 
       #viewContainer {
-        @apply(--layout-fit);
+        @apply --layout-fit;
         overflow-y: auto;
       }
 

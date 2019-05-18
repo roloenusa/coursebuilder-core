@@ -39,21 +39,6 @@ fi
 # Set shell variables common to CB scripts.
 . "$(dirname "${common_script}")/config.sh"
 
-CHROMEDRIVER_VERSION=2.24
-CHROMEDRIVER_DIR="$RUNTIME_HOME/chromedriver-$CHROMEDRIVER_VERSION"
-if [[ $OSTYPE == linux* ]] ; then
-  NODE_DOWNLOAD_FOLDER=node-v0.12.4-linux-x64
-  CHROMEDRIVER_ZIP=chromedriver_linux64.zip
-elif [[ $OSTYPE == darwin* ]] ; then
-  NODE_DOWNLOAD_FOLDER=node-v0.12.4-darwin-x64
-  CHROMEDRIVER_ZIP=chromedriver_mac64.zip
-elif [[ $OSTYPE == "cygwin" ]] ; then
-  echo "Windows install; skipping test-related downloads."
-else
-  echo "Target OS '$TARGET_OS' must start with 'linux' or 'darwin'."
-  exit -1
-fi
-CHROMEDRIVER_URL=http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/$CHROMEDRIVER_ZIP
 PYPI_URL=https://pypi.python.org/packages/source
 
 # Ensure that $COURSEBUILDER_RESOURCES is available to write
@@ -77,13 +62,7 @@ export PYTHONPATH="$SOURCE_DIR\
 :$GOOGLE_APP_ENGINE_HOME\
 :$RUNTIME_HOME/oauth2client\
 :$RUNTIME_HOME/pycrypto-2.6.1"
-PATH="$RUNTIME_HOME/node/node_modules/karma/bin\
-:$RUNTIME_HOME/node/bin\
-:$RUNTIME_HOME/phantomjs/bin\
-:$CHROMEDRIVER_DIR\
-:$PATH"
 export YUI_BASE="$RUNTIME_HOME/yui/build"
-export KARMA_LIB="$RUNTIME_HOME/karma_lib"
 
 CB_ARCHIVE_URL=https://github.com/google/coursebuilder-resources/raw/master
 CB_ARCHIVE_CONFIG_URL=$CB_ARCHIVE_URL/config
@@ -105,7 +84,7 @@ function download_and_unpack() {
     sed -e 's/.*\.tar\.gz/tar.gz/' | \
     sed -e 's/.*\.tar/tar/' | \
     sed -e 's/.*\.bz2/bz2/' )
-  local temp_dir=$(mktemp -d)
+  local temp_dir=$(mktemp -d /tmp/tmp.XXXXXXXX)
   pushd $temp_dir > /dev/null
   curl --location --silent "$source_url" -o archive_file
   case $archive_type in
@@ -257,50 +236,11 @@ if need_install beautifulsoup4 PKG-INFO Version: 4.4.1 product ; then
   mv "$RUNTIME_HOME/beautifulsoup4-4.4.1" "$RUNTIME_HOME/beautifulsoup4"
 fi
 
-if need_install selenium PKG-INFO Version: 2.53.1 test ; then
-  download_and_unpack $PYPI_URL/s/selenium/selenium-2.53.1.tar.gz
-  mv "$RUNTIME_HOME/selenium-2.53.1" "$RUNTIME_HOME/selenium"
-fi
-
-if [ ! -x "$CHROMEDRIVER_DIR/chromedriver" -a $OSTYPE != "cygwin" ] ; then
-  download_and_unpack $CHROMEDRIVER_URL "$CHROMEDRIVER_DIR"
-  chmod a+x "$CHROMEDRIVER_DIR/chromedriver"
-fi
-
-if need_install node ChangeLog Version 0.12.4 test ; then
-  download_and_unpack \
-    http://nodejs.org/dist/v0.12.4/$NODE_DOWNLOAD_FOLDER.tar.gz
-  mv "$RUNTIME_HOME/$NODE_DOWNLOAD_FOLDER" "$RUNTIME_HOME/node"
-
-  echo Installing Karma
-  pushd "$RUNTIME_HOME/node" > /dev/null
-  if [ ! -d node_modules ]; then
-    mkdir node_modules
-  fi
-  ./bin/npm --cache "$RUNTIME_HOME/node/cache" install \
-      jasmine-core@2.3.4 phantomjs@1.9.8 karma@0.12.36 \
-      karma-jasmine@0.3.5 karma-phantomjs-launcher@0.2.0 karma-jasmine-jquery \
-      --save-dev > /dev/null
-  popd > /dev/null
-fi
-
-# NOTE: Yes, we are looking for 2.1.0, having installed 2.1.1.  Because
-# PhantomJS' ChangeLog file only mentions 2.1.0, not 2.1.1.  Grr.
-if need_install phantomjs ChangeLog Version 2.1.0 test ; then
-  echo Installing PhantomJs
-  if [[ $OSTYPE == linux* ]] ; then
-    download_and_unpack \
-      $CB_ARCHIVE_LIB_URL/phantomjs-2.1.1-linux-x86_64.tar.bz2 "$RUNTIME_HOME"
-    rm -rf "$RUNTIME_HOME/phantomjs"
-    mv "$RUNTIME_HOME/phantomjs-2.1.1-linux-x86_64" "$RUNTIME_HOME/phantomjs"
-  elif [[ $OSTYPE == darwin* ]] ; then
-    download_and_unpack \
-      $CB_ARCHIVE_LIB_URL/phantomjs-2.1.1-macosx.zip \
-      "$RUNTIME_HOME/phantomjs"
-  else
-    echo "Target OS '$OSTYPE' must start with 'linux' or 'darwin'."
-    exit -1
-  fi
+if need_install html5lib PKG-INFO Version: 0.95 product ; then
+  # Html5Lib is 'product', since it's used in flattening Polymer imports
+  echo Installing HTML5LIB library
+  download_and_unpack $PYPI_URL/h/html5lib/html5lib-0.95.tar.gz
+  mv "$RUNTIME_HOME/html5lib-0.95" "$RUNTIME_HOME/html5lib"
 fi
 
 if need_install logilab/pylint ChangeLog " -- " 1.4.0 test ; then

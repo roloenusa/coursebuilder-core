@@ -1250,6 +1250,8 @@ class StudentCache(caching.RequestScopedSingleton):
 
     def _get_by_user_id_from_datastore(self, user_id):
         """Load Student by user_id. Fail if user_id is not unique."""
+        if not user_id:
+            return None  # Exit early if no user_id supplied.
         # In the CB 1.8 and below email was the key_name. This is no longer
         # true. To support legacy Student entities do a double look up here:
         # first by the key_name value and then by the user_id field value.

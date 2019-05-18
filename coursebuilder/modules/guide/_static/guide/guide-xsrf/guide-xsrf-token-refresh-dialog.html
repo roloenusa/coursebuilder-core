@@ -33,6 +33,19 @@
 <!-- A modal dialog that prompts the user for a page refresh. -->
 <dom-module id="guide-xsrf-token-refresh-dialog">
   <template>
+    <style id="linter-paper-button-style">
+      /**
+       * This style preserves the styling previous to
+       * https://github.com/PolymerElements/paper-button/pull/115
+       * This change can break the layout of paper-button content.
+       * Remove this style to apply the change, more details at b/70528356.
+       */
+      paper-button {
+        display: inline-block;
+        text-align: center;
+        font-family: inherit;
+      }
+    </style>
     <style include="guide-styles"></style>
     <paper-dialog id="dialog"
       modal="true" on-iron-overlay-closed="_refreshPage">

@@ -1,3 +1,4 @@
+# coding: utf-8
 # Copyright 2014 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -669,6 +670,9 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
     ROLE = 'test_role'
     NAMESPACE = 'ns_%s' % COURSE_NAME
 
+    # "Pre Assessment", but UNICODE-obfuscated.
+    PRE_ASSESSMENT = u'Ρȓȩ Âśʂẹʂšḿëὴṯ'
+
     TOP_LEVEL_NO_LINKS_NO_PROGRESS = [
         Element('Unit 1 - Unit One', None, None, []),
         Element('Link One', None, None, []),
@@ -732,7 +736,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
         Element('Link Two', None, None, []),
         Element('Assessment Two', None, None, []),
         Element('Unit 3 - Unit Three', None, None, contents=[
-            Element('Pre Assessment', None, None, []),
+            Element(PRE_ASSESSMENT, None, None, []),
             # Non-registered students don't see peer-review step.
             Element('3.1 Mid Lesson', None, None, []),
             Element('Post Assessment', None, None, []),
@@ -752,7 +756,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
         Element('Link Two', 'http://www.bar.com', None, []),
         Element('Assessment Two', 'assessment?name=6', None, []),
         Element('Unit 3 - Unit Three', 'unit?unit=7', None, contents=[
-            Element('Pre Assessment', 'unit?unit=7&assessment=13', None, []),
+            Element(PRE_ASSESSMENT, 'unit?unit=7&assessment=13', None, []),
             Element('Review peer assignments', None, None, []),
             Element('3.1 Mid Lesson', 'unit?unit=7&lesson=15', None, []),
             Element('Post Assessment', 'unit?unit=7&assessment=14', None, [])]),
@@ -773,7 +777,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
         Element('Assessment Two', 'assessment?name=6',
                 'progress-notstarted-6', []),
         Element('Unit 3 - Unit Three', 'unit?unit=7', None, contents=[
-            Element('Pre Assessment', 'unit?unit=7&assessment=13',
+            Element(PRE_ASSESSMENT, 'unit?unit=7&assessment=13',
                     'progress-notstarted-13', []),
             Element('Review peer assignments', None,
                     'progress-notstarted-13', []),
@@ -834,7 +838,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
         self.lesson_three.title = 'Lesson Three'
 
         self.pre_assessment = self.course.add_assessment()
-        self.pre_assessment.title = 'Pre Assessment'
+        self.pre_assessment.title = self.PRE_ASSESSMENT
         self.pre_assessment.availability = courses.AVAILABILITY_COURSE
         self.pre_assessment.workflow_yaml = (
             '{'
@@ -1377,7 +1381,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             # see it.  This is suppressed, since that's the page the user
             # is currently viewing.
             expected = [
-                Element('Pre Assessment', None, progress=None, contents=[]),
+                Element(self.PRE_ASSESSMENT, None, progress=None, contents=[]),
                 Element('3.1 Mid Lesson', 'unit?unit=7&lesson=15', None, []),
                 Element('Post Assessment', 'unit?unit=7&assessment=14',
                         None, [])
@@ -1389,7 +1393,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             # middle thing, the link for the first thing shows up and the
             # link for the middle thing disappears.
             expected = [
-                Element('Pre Assessment', 'unit?unit=7&assessment=13',
+                Element(self.PRE_ASSESSMENT, 'unit?unit=7&assessment=13',
                         None, contents=[]),
                 Element('3.1 Mid Lesson', None, None, []),
                 Element('Post Assessment', 'unit?unit=7&assessment=14',
@@ -1411,7 +1415,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             # element (the pre-assessment and the peer-review of same)
             # since that's what's open.
             replacement = Element('Unit 3 - Unit Three', None, None, contents=[
-                Element('Pre Assessment', None, None, []),
+                Element(self.PRE_ASSESSMENT, None, None, []),
                 Element('Review peer assignments', None, None, []),
                 Element('3.1 Mid Lesson', 'unit?unit=7&lesson=15', None, []),
                 Element('Post Assessment', 'unit?unit=7&assessment=14',
@@ -1613,7 +1617,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             actions.login(self.USER_EMAIL)
             expected = [
                 Element('Unit 3 - Unit Three', None, None, [
-                    Element('Pre Assessment', None, None, []),
+                    Element(self.PRE_ASSESSMENT, None, None, []),
                     Element('3.1 Mid Lesson', None, None, []),
                     Element('Post Assessment', None, None, [])])]
             response = self.get('course')
@@ -1624,7 +1628,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             actions.register(self, self.USER_EMAIL)
             expected = [
                 Element('Unit 3 - Unit Three', 'unit?unit=7', None, [
-                    Element('Pre Assessment', 'unit?unit=7&assessment=13',
+                    Element(self.PRE_ASSESSMENT, 'unit?unit=7&assessment=13',
                             'progress-notstarted-13', []),
                     Element('Review peer assignments', None,
                             'progress-notstarted-13', []),
@@ -1635,7 +1639,8 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             response = self.get('course')
             self.assertEquals(expected, self._parse_leftnav(response))
             expected = [
-                Element('Pre Assessment', None, 'progress-notstarted-13', []),
+                Element(self.PRE_ASSESSMENT, None,
+                        'progress-notstarted-13', []),
                 Element('Review peer assignments', None,
                         'progress-notstarted-13', []),
                 Element('3.1 Mid Lesson', 'unit?unit=7&lesson=15',
@@ -1657,7 +1662,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
 
             expected = [
                 Element('Unit 3 - Unit Three', 'unit?unit=7', None, [
-                    Element('Pre Assessment', 'unit?unit=7&assessment=13',
+                    Element(self.PRE_ASSESSMENT, 'unit?unit=7&assessment=13',
                             'progress-completed-13', []),
                     Element('Review peer assignments',
                             'reviewdashboard?unit=13',
@@ -1669,7 +1674,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             response = self.get('course')
             self.assertEquals(expected, self._parse_leftnav(response))
             expected = [
-                Element('Pre Assessment', None, 'progress-completed-13', []),
+                Element(self.PRE_ASSESSMENT, None, 'progress-completed-13', []),
                 Element('Review peer assignments',
                         'reviewdashboard?unit=13',
                         'progress-notstarted-13', []),
@@ -1706,7 +1711,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             # Progress should now show as in-progress.
             expected = [
                 Element('Unit 3 - Unit Three', 'unit?unit=7', None, [
-                    Element('Pre Assessment', 'unit?unit=7&assessment=13',
+                    Element(self.PRE_ASSESSMENT, 'unit?unit=7&assessment=13',
                             'progress-completed-13', []),
                     Element('Review peer assignments',
                             'reviewdashboard?unit=13',
@@ -1718,7 +1723,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             response = self.get('course')
             self.assertEquals(expected, self._parse_leftnav(response))
             expected = [
-                Element('Pre Assessment', None, 'progress-completed-13', []),
+                Element(self.PRE_ASSESSMENT, None, 'progress-completed-13', []),
                 Element('Review peer assignments',
                         'reviewdashboard?unit=13',
                         'progress-inprogress-13', []),
@@ -1740,7 +1745,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
 
             expected = [
                 Element('Unit 3 - Unit Three', 'unit?unit=7', None, [
-                    Element('Pre Assessment', 'unit?unit=7&assessment=13',
+                    Element(self.PRE_ASSESSMENT, 'unit?unit=7&assessment=13',
                             'progress-completed-13', []),
                     Element('Review peer assignments',
                             'reviewdashboard?unit=13',
@@ -1752,7 +1757,7 @@ class AvailabilityTests(triggers_tests.ContentTriggerTestsMixin,
             response = self.get('course')
             self.assertEquals(expected, self._parse_leftnav(response))
             expected = [
-                Element('Pre Assessment', None, 'progress-completed-13', []),
+                Element(self.PRE_ASSESSMENT, None, 'progress-completed-13', []),
                 Element('Review peer assignments',
                         'reviewdashboard?unit=13',
                         'progress-completed-13', []),

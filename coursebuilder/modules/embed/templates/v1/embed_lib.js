@@ -75,7 +75,7 @@
         .attr('class', IFRAME_CLASS)
         .attr('scrolling', 'no')
         .css('height', '0')
-        .load(function() {
+        .on('load', function() {
           this._iframeCanBePopulated.resolve();
         }.bind(this));
       // Insert now so iframe document exists for later accessors.

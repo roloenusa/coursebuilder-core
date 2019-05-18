@@ -1,3 +1,4 @@
+# coding: utf-8
 # Copyright 2016 Google Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -457,8 +458,7 @@ class FunctionalTestBase(TriggerTestsMixin, actions.TestBase):
 
         self.base = '/' + self.COURSE_NAME
         self.app_context = actions.simple_add_course(
-            self.COURSE_NAME, self.ADMIN_EMAIL,
-            availability_options.option_to_title(self.COURSE_NAME))
+            self.COURSE_NAME, self.ADMIN_EMAIL, self.COURSE_TITLE)
         self.course = courses.Course(None, self.app_context)
 
     def check_copy_from_settings(self, cls, settings_name):
@@ -541,6 +541,8 @@ class FunctionalTestBase(TriggerTestsMixin, actions.TestBase):
 
 class DateTimeTriggerFunctionalTests(FunctionalTestBase):
 
+    # "Date Time Trigger Tests", but UNICODE-obfuscated.
+    COURSE_TITLE = u'Ďāṯȅ Ṭɩɱé Ţṛΐģğѐŗ Țĕśťŝ'
     COURSE_NAME = 'date_time_trigger_tests'
     NAMESPACE = 'ns_{}'.format(COURSE_NAME)
 
@@ -838,6 +840,8 @@ class ContentTriggerTests(ContentTriggerTestBase):
     are meant to be unit tests, to permit access to Course creation.
     """
 
+    # "Content Trigger Tests", but UNICODE-obfuscated.
+    COURSE_TITLE = u'Ḉὅǹẗêᾓŧ Țṙĩģǥéŗ Ţêšŧʂ'
     COURSE_NAME = 'content_trigger_test'
 
     def test_name_logged_str(self):
@@ -1521,6 +1525,8 @@ class MilestoneTriggerTestBase(MilestoneTriggerTestsMixin, FunctionalTestBase):
 class MilestoneTriggerTests(MilestoneTriggerTestBase):
     """Tests the MilestoneTrigger class."""
 
+    # "Milestone Trigger Tests", but UNICODE-obfuscated.
+    COURSE_TITLE = u'Ӎíǀéѕẗȏᾐӗ Ṫṝῒĝǧӗȑ Τḙŝʈѕ'
     COURSE_NAME = 'milestone_trigger_test'
     NAMESPACE = 'ns_{}'.format(COURSE_NAME)
 
@@ -1628,7 +1634,7 @@ class MilestoneTriggerTests(MilestoneTriggerTestBase):
 
     def check_course_when(self, env, encoded_triggers):
         for milestone in self.TMT.KNOWN_MILESTONES:
-            cw = self.TMT.get_course_when(env, milestone, self.COURSE_NAME)
+            cw = self.TMT.get_course_when(env, milestone, self.COURSE_TITLE)
             encoded_trigger = encoded_triggers.get(milestone, [{}])[0]
             when = encoded_trigger.get('when')
             self.assertEquals(when, cw.iso8601_z)
@@ -1656,10 +1662,10 @@ class MilestoneTriggerTests(MilestoneTriggerTestBase):
 
             if title:
                 no_suffix = '{} on {}.'.format(title, no_suffix)
-                as_tooltip = '{} on {} for "{}".'.format(
-                    title, human, self.COURSE_NAME)
+                as_tooltip = u'{} on {} for "{}".'.format(
+                    title, human, self.COURSE_TITLE)
             else:
-                as_tooltip = '{} for "{}".'.format(human, self.COURSE_NAME)
+                as_tooltip = u'{} for "{}".'.format(human, self.COURSE_TITLE)
 
             self.assertEquals(no_suffix, cw.no_suffix)
             self.assertEquals(as_tooltip, cw.as_tooltip)
@@ -1756,13 +1762,15 @@ class MilestoneTriggerTests(MilestoneTriggerTestBase):
 
 class CronHackTests(actions.TestBase):
 
+    # "Cron Hack Test", but UNICODE-obfuscated.
+    COURSE_TITLE = u'Ϲṛȏռ ῌẳςҝ Τęśţ'
     COURSE_NAME = 'cron_hack_test'
     ADMIN_EMAIL = 'admin@example.com'
 
     def setUp(self):
         super(CronHackTests, self).setUp()
         self.app_context = actions.simple_add_course(
-            self.COURSE_NAME, self.ADMIN_EMAIL, 'Cron Hack Test')
+            self.COURSE_NAME, self.ADMIN_EMAIL, self.COURSE_TITLE)
         self.save_seconds_per_hour = utc._SECONDS_PER_HOUR
         utc._SECONDS_PER_HOUR = 10
 

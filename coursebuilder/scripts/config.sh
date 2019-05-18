@@ -32,6 +32,7 @@ export GOLDEN_INSTALL_LIST="$INTERNAL_SCRIPTS_DIR/golden_install_list"
 # Paths for resources used by the Python runtime.
 export BEAUTIFULSOUP_PATH="$RUNTIME_HOME/beautifulsoup4"
 export FANCY_URLLIB_PATH="$GOOGLE_APP_ENGINE_HOME/lib/fancy_urllib"
+export HTML5LIB_PATH="$RUNTIME_HOME/html5lib"
 export JINJA_PATH="$GOOGLE_APP_ENGINE_HOME/lib/jinja2-2.6"
 export PYCRYPTO_PATH="$RUNTIME_HOME/pycrypto-2.6.1"
 export SELENIUM_PATH="$RUNTIME_HOME/selenium/py"

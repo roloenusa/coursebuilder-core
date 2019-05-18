@@ -2281,7 +2281,7 @@ def run_all_unit_tests():
 
 # pylint: disable=line-too-long
 
-# taken from http://www.google.com/edu/openonline/edukit/course-parts.html
+# taken from http://edu.google.com/openonline/edukit/course-parts.html
 SAMPLE_HTML_DOC_CONTENT = u'''
 
 <!DOCTYPE html>
@@ -2303,7 +2303,7 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
     </script>
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" rel=
     "stylesheet">
-    <link href=" /edu/openonline/css/edukit.css" rel="stylesheet">
+    <link href=" /openonline/css/edukit.css" rel="stylesheet">
   </head>
   <body>
     <div class="maia-header" id="maia-header" role="banner">
@@ -2319,24 +2319,24 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
         <ul>
           <li>
             <a data-g-action="Maia: Level 1" data-g-event="Maia: Site Nav" data-g-label="OOE_Home"
-            href="/edu/openonline/index.html">Home</a>
+            href="/openonline/index.html">Home</a>
           </li>
           <li>
             <a data-g-action="Maia: Level 1" data-g-event="Maia: Site Nav" data-g-label=
-            "OOE_Insights" href="/edu/openonline/insights/index.html">Insights</a>
+            "OOE_Insights" href="/openonline/insights/index.html">Insights</a>
           </li>
           <li>
             <a class="active" data-g-action="Maia: Level 1" data-g-event="Maia: Site Nav"
-            data-g-label="OOE_Edu_Kit" href="/edu/openonline/edukit/index.html">Online Course
+            data-g-label="OOE_Edu_Kit" href="/openonline/edukit/index.html">Online Course
             Kit</a>
           </li>
           <li>
             <a data-g-action="Maia: Level 1" data-g-event="Maia: Site Nav" data-g-label=
-            "OOE_Open_edX" href="/edu/openonline/tech/index.html">Technologies</a>
+            "OOE_Open_edX" href="/openonline/tech/index.html">Technologies</a>
           </li>
           <li>
             <a class="active" data-g-action="Maia: Level 1" data-g-event="Maia: Site Nav"
-            data-g-label="GOOG_EDU_main" href="/edu/index.html">Google for Education</a>
+            data-g-label="GOOG_EDU_main" href="/index.html">Google for Education</a>
           </li>
         </ul>
       </div>
@@ -2347,36 +2347,36 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
           <ul>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label=
-              "Quick Start" href="/edu/openonline/edukit/quickstart.html">Quick Start</a>
+              "Quick Start" href="/openonline/edukit/quickstart.html">Quick Start</a>
             </li>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label="Plan"
-              href="/edu/openonline/edukit/plan.html">Plan</a>
+              href="/openonline/edukit/plan.html">Plan</a>
             </li>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label="Create"
-              href="/edu/openonline/edukit/create.html">Create</a>
+              href="/openonline/edukit/create.html">Create</a>
             </li>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label=
-              "Implement" href="/edu/openonline/edukit/implement.html">Implement</a>
+              "Implement" href="/openonline/edukit/implement.html">Implement</a>
             </li>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label="Pilot"
-              href="/edu/openonline/edukit/pilot.html">Pilot</a>
+              href="/openonline/edukit/pilot.html">Pilot</a>
             </li>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label=
-              "Communicate" href="/edu/openonline/edukit/communicate.html">Communicate</a>
+              "Communicate" href="/openonline/edukit/communicate.html">Communicate</a>
             </li>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label=
-              "Using Course Builder" href="/edu/openonline/edukit/course-parts.html">Using Course
+              "Using Course Builder" href="/openonline/edukit/course-parts.html">Using Course
               Builder</a>
             </li>
             <li>
               <a data-g-action="Maia: Level 2" data-g-event="Maia: Site Nav" data-g-label=
-              "More Resources" href="/edu/openonline/edukit/resource.html">More Resources</a>
+              "More Resources" href="/openonline/edukit/resource.html">More Resources</a>
             </li>
           </ul>
         </div>
@@ -2456,7 +2456,7 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
             A lesson is a coherent and relatively small chunk of information. In Power Searching
             with Google, we chose to create each lesson as one video and a text version of the same
             content. Your lessons do not have to have both parts. For more information, see
-            <a href="https://www.google.com/edu/openonline/course-builder/docs/1.10/create-a-course/add-elements/lessons/lessons.html">Create Lessons</a>.
+            <a href="https://edu.google.com/openonline/course-builder/docs/1.10/create-a-course/add-elements/lessons/lessons.html">Create Lessons</a>.
           </p>
           <p>
             An activity is an ungraded assessment, used to provide feedback to students on how well
@@ -2648,7 +2648,7 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
         </p>
         <ul>
           <li>
-            <a href="https://www.google.com/edu/openonline/course-builder/docs/1.10/prepare-for-students/forum.html">Google Groups or other web
+            <a href="https://edu.google.com/openonline/course-builder/docs/1.10/prepare-for-students/forum.html">Google Groups or other web
             forum</a><br>
             A web forum is a great way to get your students to talk to each other. To facilitate
             discussion, you can set up your forum with appropriate categories, to guide students to
@@ -2660,7 +2660,7 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
             students.
           </li>
           <li>
-            <a href="https://www.google.com/edu/openonline/course-builder/docs/1.10/meet-course-builder/student-facing-site.html#announcements-tab">Google+ page or
+            <a href="https://edu.google.com/openonline/course-builder/docs/1.10/meet-course-builder/student-facing-site.html#announcements-tab">Google+ page or
             blog</a><br>
             Use Google+ or your blog to share information that you want available to not just your
             students, but to other people as well. While students can comment on your posts, these
@@ -2668,13 +2668,13 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
             students.
           </li>
           <li>
-            <a href="https://www.google.com/edu/openonline/course-builder/docs/1.10/create-a-course/add-elements/links.html#online-office-hours">Google Hangout</a><br>
+            <a href="https://edu.google.com/openonline/course-builder/docs/1.10/create-a-course/add-elements/links.html#online-office-hours">Google Hangout</a><br>
             You may decide that you want your students to divide into smaller groups to work on
             projects together. Your students probably live in distributed areas. You can have them
             meet in a Google Hangout to collaborate on their project.
           </li>
           <li>
-            <a href="https://www.google.com/edu/openonline/course-builder/docs/1.10/prepare-for-students/invitations.html">Announcements-only email alias</a><br>
+            <a href="https://edu.google.com/openonline/course-builder/docs/1.10/prepare-for-students/invitations.html">Announcements-only email alias</a><br>
             Throughout the course, you may want to send email to students, such as to remind them
             of upcoming events.
           </li>
@@ -2690,14 +2690,14 @@ new gweb.analytics.AutoTrack({profile:"UA-12481063-1"});
         <p>
           Of course, as with any class there are various administrative aspects to creating an
           online course. Two of the major ones are <a href=
-          "https://www.google.com/edu/openonline/course-builder/docs/1.10/prepare-for-students/invitations.html">managing student
+          "https://edu.google.com/openonline/course-builder/docs/1.10/prepare-for-students/invitations.html">managing student
           registration</a> and <a href=
-          "https://www.google.com/edu/openonline/course-builder/docs/1.10/prepare-for-students/registration.html">collecting and analyzing data
+          "https://edu.google.com/openonline/course-builder/docs/1.10/prepare-for-students/registration.html">collecting and analyzing data
           to see how well your course does</a>.
         </p>
         <p>
           For a full list of tasks needed to create a course, see the <a href=
-          "https://www.google.com/edu/openonline/course-builder/docs/1.10/create-a-course/create-a-course.html">Course Builder
+          "https://edu.google.com/openonline/course-builder/docs/1.10/create-a-course/create-a-course.html">Course Builder
           Checklist</a>.
         </p>
       </div>
